@@ -7,5 +7,5 @@ class Product(models.Model):
   description = models.TextField(max_length=500, blank=True, null=True)
   price = models.PositiveSmallIntegerField(null=True)
   active = models.BooleanField(default=True)
-  categories = models.ManyToManyField(Category, blank=True)
+  category = models.ManyToManyField(Category, blank=True)
 
