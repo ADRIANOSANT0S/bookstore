@@ -51,5 +51,7 @@ class TestOrderViewsSet(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         
         create_order = Order.objects.get(user=user)
+
+        self.assertEqual(create_order.user, user)
         
 
