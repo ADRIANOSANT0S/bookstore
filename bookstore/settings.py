@@ -10,10 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
+from dotenv import load_dotenv
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+load_dotenv(dotenv_path=os.path.join(BASE_DIR, '.env.dev'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -82,8 +87,12 @@ WSGI_APPLICATION = "bookstore.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": os.getenv("SQL_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.getenv("SQL_DATABASE", BASE_DIR / "db.sqlite3"),
+        "USER": os.getenv("SQL_USER", "user"),
+        "PASSWORD": os.getenv("SQL_PASSWORD", "password"),
+        "HOST": os.getenv('SQL_HOST', "localhost"),
+        "PORT": os.getenv("SQL_PORT", "5432"),
     }
 }
 
@@ -143,3 +152,11 @@ REST_FRAMEWORK = {
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+
+DEBUG = int(os.getenv("DEBUG", default=0))
+
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS").split(' ')
+
+print(SECRET_KEY, DEBUG, DATABASES, ALLOWED_HOSTS)
