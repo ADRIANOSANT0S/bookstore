@@ -3,6 +3,7 @@ import pytest
 from order.factories import OrderFactory, UserFactory
 from product.factories import ProductFactory
 
+
 @pytest.mark.django_db
 def test_order_creation():
     user = UserFactory()

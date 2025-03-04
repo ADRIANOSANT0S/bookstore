@@ -7,8 +7,8 @@ from order.models.order import Order
 
 
 class UserFactory(factory.django.DjangoModelFactory):
-    email = factory.Faker('email')
-    username = factory.Faker('user_name')
+    email = factory.Faker("email")
+    username = factory.Faker("user_name")
 
     class Meta:
         model = User
@@ -28,4 +28,4 @@ class OrderFactory(factory.django.DjangoModelFactory):
 
     class Meta:
         model = Order
-        skip_postgeneration_save=True
+        skip_postgeneration_save = True
