@@ -12,10 +12,18 @@ dependencies = [
     "django>=5.1.5,<6.0.0",
     "djangorestframework>=3.15.2,<4.0.0",
     "django-extensions>=3.2.3,<4.0.0",
-    "django-debug-toolbar>=5.0.1,<6.0.0"
+    "django-debug-toolbar>=5.0.1,<6.0.0",
+    "psycopg2-binary>=2.9.10,<3.0.0",
+    "dotenv (>=0.9.9,<0.10.0)",
 ]
 
 [optional-dependencies]
 dev = [
     "pytest-django^4.9.0"
 ]
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^7.1.2"
+black = "^25.1.0"
+make = "^0.1.6.post2"
+
