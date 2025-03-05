@@ -157,6 +157,6 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = int(os.getenv("DEBUG", default=0))
 
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS").split(' ')
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", 'localhost 127.0.0.1').split(' ')
 
 print(SECRET_KEY, DEBUG, DATABASES, ALLOWED_HOSTS)
