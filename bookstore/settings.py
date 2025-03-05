@@ -153,7 +153,7 @@ INTERNAL_IPS = [
     '127.0.0.1',
 ]
 
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY", 'foo')
 
 DEBUG = int(os.getenv("DEBUG", default=0))
 
