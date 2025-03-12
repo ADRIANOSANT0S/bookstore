@@ -4,33 +4,30 @@ on: [push]
 
 jobs:
   build:
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: [3.8, 3.9]
-
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.12]
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install poetry
+      - name: Install Poetry
         run: |
-          python -m ensurepip
           python -m pip install --upgrade pip
-          python -m pip install --upgrade poetry
-      - name: View poetry --help
+          python -m pip install poetry
+
+      - name: View Poetry commands
         run: poetry --help
 
       - name: Install dependencies
-        shell: bash
-        run: python -m poetry install
+        run: poetry install
 
-      - name: Test
-        run: |
-          poetry run python manage.py test
+      - name: Run tests
+        run: poetry run python manage.py test
