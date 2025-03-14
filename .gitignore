@@ -1,4 +1,3 @@
-**/__pycache__/
 *.pyo
 *.pyd
 
@@ -15,3 +14,8 @@ venv/
 
 .DS_Store
 Thumbs.db
+
+__pycache__
+*.pyc
+env/
+db.sqlite3
