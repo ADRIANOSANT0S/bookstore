@@ -52,6 +52,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -81,6 +82,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "bookstore.wsgi.application"
 
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -157,6 +161,4 @@ SECRET_KEY = os.getenv("SECRET_KEY", 'foo')
 
 DEBUG = int(os.getenv("DEBUG", default=0))
 
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", 'localhost 127.0.0.1').split(' ')
-
-print(SECRET_KEY, DEBUG, DATABASES, ALLOWED_HOSTS)
+ALLOWED_HOSTS = ['localhost','127.0.0.1', 'add_url_of_your_server']
