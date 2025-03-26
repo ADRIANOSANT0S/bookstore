@@ -161,4 +161,4 @@ SECRET_KEY = os.getenv("SECRET_KEY", 'foo')
 
 DEBUG = int(os.getenv("DEBUG", default=0))
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1', 'add_url_of_your_server']
+ALLOWED_HOSTS = ['localhost','127.0.0.1', 'ebac.pythonanywhere.com']
